@@ -4,7 +4,7 @@ const People = require('../models/Crud-model');
 router.get('/', async (req, res) => {
     try {
         const peoples = await People.find();
-        res.render('index', { peoples, people: new People() });
+        res.render('index', {peoples, people: new People() });
     } catch (err) {
         console.log(err);
     }
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        await People.findOneAndUpdate(id, req.body);
+        await People.findByIdAndUpdate(id, req.body);
         res.json({cb: '/'});
     } catch (err) {
         console.log(err);
