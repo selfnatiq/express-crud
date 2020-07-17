@@ -4,7 +4,7 @@ const People = require('../models/Crud-model');
 router.get('/', async (req, res) => {
     try {
         const peoples = await People.find();
-        res.render('index', {peoples, people: new People() });
+        res.render('index', { peoples, people: new People() });
     } catch (err) {
         console.log(err);
     }
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        await People.findOneAndDelete(id);
+        await People.findByIdAndDelete(id);
         res.json({cb: '/'});
     } catch (err) {
         console.log(err);
